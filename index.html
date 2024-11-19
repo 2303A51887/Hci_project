@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GHRUHA.com </title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="fixed w-full top-0 bg-white shadow-sm z-50">
+        <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center">
+                <a href="index.html" class="ml-2 font-bold text-gray-800">GHRUHA.COM</a>
+            </div>
+            <nav class="flex items-center space-x-4">
+                <a href="saved.html" class="nav-button">Saved</a>
+                <a href="Post.html" class="nav-button">Post Property</a>
+                <a href="Login.html" class="Login"><span>👤</span> Login/Register</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Hero Section -->
+    <main class="gradient-bg min-h-screen pt-20">
+        <div class="container mx-auto px-4 py-16">
+            <h1 class="text-4xl font-bold text-white text-center mb-8">Find your dream house</h1>
+            
+            <!-- Search Bar -->
+            <div class="max-w-4xl mx-auto mb-8">
+                <div class="flex items-center search-container p-2">
+                    <div class="location-dropdown px-4 py-2 flex items-center">
+                        <span class="font-medium">Warangal</span>
+                        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </div>
+                    <input type="text" 
+                           id="searchInput"
+                           placeholder="Search for locality or landmark" 
+                           class="flex-1 px-4 py-2 outline-none">
+                    <button id="searchButton" class="search-btn">
+                        Search
+                    </button>
+                </div>
+            </div>
+
+            <!-- Property Types -->
+            <div class="property-types-container">
+                <button class="property-type-btn" data-type="buy">BUY</button>
+                <button class="property-type-btn active" data-type="rent">RENT</button>
+                <button class="property-type-btn" data-type="plots">PLOTS</button>
+            </div>
+
+            <!-- Popular Localities -->
+            <div class="localities-section">
+                <div class="flex items-center text-white mb-4">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                              d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                    </svg>
+                    <span class="opacity-70">Popular Localities</span>
+                </div>
+                <div class="localities-container">
+                    <button class="locality-tag">Warangal →</button>
+                    <button class="locality-tag">Naimnagar →</button>
+                    <button class="locality-tag">Ku-cross →</button>
+                    <button class="locality-tag">Ghatkesar →</button>
+                    <button class="locality-tag">Kukatpally →</button>
+                </div>
+            </div>
+
+            <!-- Mega Utsav Banner -->
+            <div class="mega-utsav-banner">
+                <div class="flex items-center">
+                    <img src="https://media.gettyimages.com/id/128502214/photo/classic-turn-of-the-century-american-house.jpg?s=612x612&w=gi&k=20&c=i4olPZuStzxhaUt8Py7FzUSRaub86j2UdvezcLPtThI" alt="Mega Home Utsav" class="w-24 h-24">
+                    <div class="ml-6">
+                        <h3 class="text-2xl font-bold mb-2">MEGA Home UTSAV</h3>
+                        <p class="opacity-80 mb-2">1st Oct - 15th Nov 2024</p>
+                        <p class="opacity-80">Exclusive Deals | Reputed Developers | Top Channel Partners</p>
+                    </div>
+                </div>
+                <button class="explore-btn">
+                    Explore Now!
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

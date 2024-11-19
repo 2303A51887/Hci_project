@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GHRUHA.com - Rentals in Hyderabad </title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(to bottom, #0f766e, #1e3a8a);
+            min-height: 100vh;
+            padding-top: 4rem;
+        }
+
+        .navbar {
+            background: white;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 0.5rem 0;
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .logo-link {
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: #1e3a8a;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        .logo-text {
+            font-weight: bold;
+            font-size: 1.25rem;
+            color: #1e3a8a;
+           
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            margin-left: auto;
+        }
+
+        .nav-link {
+            padding: 0.5rem 1rem;
+            color: #4b5563;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            border-radius: 0.375rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-link:hover {
+            background: #f3f4f6;
+            color: #1e3a8a;
+        }
+
+        .login-link {
+            background: #ef4444;
+            color: white;
+            padding: 0.5rem 1.25rem;
+            border-radius: 0.375rem;
+            transition: background-color 0.3s;
+        }
+
+        .login-link:hover {
+            background: #dc2626;
+            color: white;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        .location-tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .location-tab {
+            padding: 0.75rem 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .location-tab:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .location-tab.active {
+            background: white;
+            color: #1e3a8a;
+            font-weight: 600;
+        }
+
+        .header {
+            background: #f9fafb;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .header h1 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #1e3a8a;
+        }
+
+        .header p {
+            color: #6b7280;
+        }
+
+        .property-card {
+            background: white;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .property-card:hover {
+            transform: translateY(-2px);
+        }
+
+        .property-content {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .property-image {
+            width: 300px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 0.5rem;
+            flex-shrink: 0;
+        }
+
+        .property-details {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .price {
+            font-size: 1.75rem;
+            font-weight: bold;
+            color: #1e3a8a;
+            margin-bottom: 0.5rem;
+        }
+
+        .icon-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .icon-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .amenities {
+            display: flex;
+            gap: 1.5rem;
+            margin: 1rem 0;
+            flex-wrap: wrap;
+        }
+
+        .amenity {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #4b5563;
+        }
+
+        .nearby {
+            color: #6b7280;
+            margin: 1rem 0;
+            line-height: 1.5;
+        }
+
+        .owner-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .owner-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .owner-avatar {
+            width: 2.5rem;
+            height: 2.5rem;
+            background: #7c3aed;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .contact-btn {
+            background: #10b981;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-weight: 600;
+        }
+
+        .contact-btn:hover {
+            background: #059669;
+        }
+
+        .posted-time {
+            color: #6b7280;
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+        }
+
+        .location-content {
+            display: none;
+        }
+
+        .location-content.active {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .property-content {
+                flex-direction: column;
+            }
+
+            .property-image {
+                width: 100%;
+                height: 250px;
+            }
+
+            .owner-section {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .contact-btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .navbar .container {
+                flex-direction: column;
+                padding: 1rem;
+                gap: 1rem;
+            }
+
+            .nav-buttons {
+                width: 100%;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            .nav-link {
+                text-align: center;
+            }
+
+            .login-link {
+                width: 100%;
+                text-align: center;
+            }
+
+            body {
+                padding-top: 6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo-link">
+                
+                <span class="logo-text">GHRUHA.COM</span>
+            </a>
+            <div class="nav-buttons">
+                <a href="saved.html" class="nav-link"> Saved </a>
+                <a href="post.html" class="nav-link"> Post Property </a>
+                <a href="Login.html" class="nav-link login-link">
+                    <span>👤</span> Login/Register
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="location-tabs">
+            <button class="location-tab active" data-location="Hyderabad">Hyderabad</button>
+            <button class="location-tab" data-location="Kukatpally">Kukatpally</button>
+            <button class="location-tab" data-location="Ghatkesar">Ghatkesar</button>
+        </div>
+
+        <div id="Hyderabad" class="location-content active">
+            <div class="header">
+                <h1>Flats for Rent in Hyderabad</h1>
+                <p>Showing properties available in Hyderabad</p>
+            </div>
+            <div id="HyderabadProperties"></div>
+        </div>
+
+        <div id="Kukatpally" class="location-content">
+            <div class="header">
+                <h1>Flats for Rent in Kukatpally</h1>
+                <p>Showing properties available in Kukatpally</p>
+            </div>
+            <div id="KukatpallyProperties"></div>
+        </div>
+
+        <div id="Ghatkesar" class="location-content">
+            <div class="header">
+                <h1>Flats for Rent in Ghatkesar</h1>
+                <p>Showing properties available in Ghatkesar</p>
+            </div>
+            <div id="GhatkesarProperties"></div>
+        </div>
+    </main>
+
+    <script>
+        const propertiesData = {
+            Hyderabad: [
+                {
+                    id: 1,
+                    price: "12,000",
+                    type: "3 BHK House",
+                    location: "Hyderabad",
+                    furnishing: "Semi-furnished",
+                    area: "750 sq.ft",
+                    bathrooms: "3",
+                    owner: "Priya Reddy",
+                    postedDays: 5,
+                    nearbyPlaces: ["Railway Station", "Public Park"]
+                },
+                {
+                    id: 2,
+                    price: "15,000",
+                    type: "3 BHK Apartment",
+                    location: "Charminar",
+                    furnishing: "Fully-furnished",
+                    area: "1000 sq.ft",
+                    bathrooms: "3",
+                    owner: "Suresh Kumar",
+                    postedDays: 2,
+                    nearbyPlaces: ["City Mall", "Hospital"]
+                }
+            ],
+            Kukatpally: [
+                {
+                    id: 1,
+                    price: "8,000",
+                    type: "2 BHK Flat",
+                    location: "Kukatpally",
+                    furnishing: "Unfurnished",
+                    area: "600 sq.ft",
+                    bathrooms: "2",
+                    owner: "Ram Kumar",
+                    postedDays: 3,
+                    nearbyPlaces: ["Bus Stop", "Market"]
+                },
+                {
+                    id: 2,
+                    price: "10,500",
+                    type: "2 BHK Apartment",
+                    location: "Kukatpally Main",
+                    furnishing: "Semi-furnished",
+                    area: "700 sq.ft",
+                    bathrooms: "2",
+                    owner: "Lakshmi Devi",
+                    postedDays: 1,
+                    nearbyPlaces: ["School", "Shopping Complex"]
+                }
+            ],
+            Ghatkesar: [
+                {
+                    id: 1,
+                    price: "8,500",
+                    type: "2 BHK Flat",
+                    location: "Ghatkesar",
+                    furnishing: "Unfurnished",
+                    area: "450 sq.ft",
+                    bathrooms: "2",
+                    owner: "Ravi Kumar",
+                    postedDays: 2,
+                    nearbyPlaces: ["Central Mall", "City Hospital"]
+                },
+                {
+                    id: 2,
+                    price: "14,000",
+                    type: "3 BHK Duplex",
+                    location: "Ghatkesar Road",
+                    furnishing: "Semi-furnished",
+                    area: "1000 sq.ft",
+                    bathrooms: "3",
+                    owner: "Suman Sharma",
+                    postedDays: 1,
+                    nearbyPlaces: ["Garden", "Metro Station"]
+                }
+            ]
+        };
+
+        function createPropertyCard(property) {
+            return `
+                <article class="property-card">
+                    <div class="property-content">
+                        <img src="https://via.placeholder.com/300x200" alt="${property.type}" class="property-image">
+                        <div class="property-details">
+                            <div class="property-header">
+                                <div>
+                                    <div class="price">₹${property.price}</div>
+                                    <div>${property.type} in ${property.location}</div>
+                                </div>
+                                <div class="action-buttons">
+                                    <button class="icon-btn" aria-label="Save property">❤️</button>
+                                </div>
+                            </div>
+                            <div class="amenities">
+                                <div class="amenity">🏠 ${property.furnishing}</div>
+                                <div class="amenity">📐 ${property.area}</div>
+                                <div class="amenity">🚿 ${property.bathrooms} Bathrooms</div>
+                            </div>
+                            <div class="nearby">Nearby: ${property.nearbyPlaces.join(" • ")}</div>
+                            <div class="owner-section">
+                                <div class="owner-info">
+                                    <div class="owner-avatar" aria-label="Owner avatar">${property.owner[0]}</div>
+                                    <div>
+                                        <div>${property.owner}</div>
+                                        <div class="posted-time">Posted ${property.postedDays} days ago</div>
+                                    </div>
+                                </div>
+                                <button class="contact-btn">Contact Owner</button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            `;
+        }
+
+        function renderProperties() {
+            Object.keys(propertiesData).forEach(location => {
+                const container = document.getElementById(`${location}Properties`);
+                if (container) {
+                    container.innerHTML = propertiesData[location]
+                        .map(createPropertyCard)
+                        .join('');
+                }
+            });
+        }
+
+        function initializeTabs() {
+            const tabs = document.querySelectorAll('.location-tab');
+            const contents = document.querySelectorAll('.location-content');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    const location = tab.dataset.location;
+
+                    // Update tabs
+                    tabs.forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+
+                    // Update content
+                    contents.forEach(c => c.classList.remove('active'));
+                    document.getElementById(location)?.classList.add('active');
+                });
+            });
+        }
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', () => {
+            renderProperties();
+            initializeTabs();
+        });
+    </script>
+</body>
+</html>
